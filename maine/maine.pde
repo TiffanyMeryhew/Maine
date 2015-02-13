@@ -25,8 +25,8 @@ void setup(){
     if(value1>maineDataMax){
       maineDataMax = value1;
     }
-    if(value2<maineDataMin){
-      maineDataMin = value2;
+    if(value1<maineDataMin){
+      maineDataMin = value1;
     }
   }
 }
@@ -49,14 +49,11 @@ void drawData(float x, float y, String name){
   float value2 = maineDataTable.getFloat(name, 2);
   float radius =0;
   if(value1 > 0){
-    radius = map(value1, 0, maineDataMax, 1.5, 15);
+    radius = map(value1, maineDataMin, maineDataMax, 1.5, 15);
     fill(#333366);  //blue
-  } else {
-    radius = map(value2, 0, maineDataMin, 1.5, 15);
-    fill(#EC5166); //red
-  }
+  } 
   ellipseMode(RADIUS);
-  ellipse(x, y, radius, radius);
+  ellipse(x, y, 5, 5);
   
   if(dist(x, y, mouseX, mouseY)<radius+2){
     fill(0);
